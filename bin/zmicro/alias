@@ -1,0 +1,34 @@
+#!/bin/bash
+
+help() {
+  echo "Usage:"
+  echo "  zmicro containerssh <args ...>"
+  echo ""
+
+  containerssh --help
+}
+
+version() {
+  # containerssh --version
+  echo "v0.4.1"
+}
+
+core() {
+  case $1 in
+  -h | --help | help)
+    help
+    ;;
+  -v | --version | version)
+    version
+    ;;
+  *)
+    containerssh "$@"
+    ;;
+  esac
+}
+
+run() {
+  core "$@"
+}
+
+run "$@"
